@@ -1,0 +1,32 @@
+{
+  "name": "ai-chatbot",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "migration:dev": "npx wrangler d1 migrations apply ai-chatbot-rag-db --local",
+    "migration:prod": "npx wrangler d1 migrations apply ai-chatbot-rag-db --remote",
+    "deploy": "wrangler deploy",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "cloudflare",
+    "workers",
+    "rag"
+  ],
+  "license": "MIT",
+  "description": "Cloudflare-first RAG chatbot MVP",
+  "dependencies": {
+    "hono": "^4.12.8",
+    "openai": "^6.32.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20260317.1",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.0",
+    "wrangler": "^4.75.0"
+  }
+}

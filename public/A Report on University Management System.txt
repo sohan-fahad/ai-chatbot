@@ -1,0 +1,574 @@
+﻿A Report on University Management System
+
+
+
+
+Submitted by:
+
+
+Student Name
+	Student ID
+	Abdul Khalek
+	202231064101
+	
+
+	
+
+	
+
+	
+
+	
+
+Course name: System Analysis and Design Lab
+Course Code: CSE- 4205
+Submitted to: Faculty Name, Designation
+Date: Submission Date
+Project Contribution
+	SL
+	Student Name
+	Student ID
+	Percentage Of Work
+	01
+	Abdul Khalek
+	202231064101
+	
+
+	02
+	
+
+	
+
+	
+
+	03
+	
+
+	
+
+	
+
+	04
+	
+
+	
+
+	
+
+	05
+	
+
+	
+
+	
+
+	06
+	
+
+	
+
+	
+
+	07
+	
+
+	
+
+	
+
+	08
+	
+
+	
+
+	
+
+	
+
+________________
+
+
+Abstract
+This project focuses on the design and development of a University Management System to streamline academic and administrative processes within a higher education institution. The system aims to automate student enrollment, course registration, grade management, faculty assignment, and administrative operations, reducing manual workload and improving efficiency. It supports multiple user roles including students, faculty members, department heads, and administrators, each with specific permissions and functionalities. The report includes comprehensive requirement analysis, use case diagrams, and an Entity-Relationship (ER) diagram to model the database structure. A user-friendly interface has been designed with robust input validation to ensure data accuracy and security. By integrating these components, the University Management System enhances operational transparency, facilitates better academic planning, and provides real-time access to critical information for all stakeholders.
+________________
+
+
+Introduction
+University management refers to the coordination and administration of academic programs, student records, faculty assignments, and institutional resources within a higher education setting. It encompasses the systematic handling of admissions, course scheduling, examination management, grade recording, and communication between students, faculty, and administrative staff.
+This system is essential for universities and colleges of all sizes, helping them maintain accurate records, streamline workflows, and provide better services to the academic community. By implementing a centralized and automated university management system, institutions can improve accessibility, reduce paperwork, enhance communication, and ensure compliance with academic standards.
+The system supports multiple user roles, each with distinct responsibilities and access privileges. Effective monitoring of user activities and maintaining accurate information is crucial for the successful operation of such a system.
+The goal of this report is to outline the design and development of an automated university management system that leverages modern technology to improve efficiency, provide real-time access to academic information, and ensure smooth coordination among students, faculty, and administrators throughout the academic lifecycle.
+________________
+
+
+List of Users and Activities
+This system includes various types of users at different levels of the organization. Each user plays a vital role in the functioning of the university. The system identifies four primary user types: Student, Faculty, Department Head, and Admin. A summarized overview of their roles is provided below.
+1. Student
+   1. Login/Register 
+   2. View Dashboard 
+   3. Enroll in Courses 
+   4. View Course Schedule 
+   5. Submit Assignments 
+   6. View Grades 
+   7. Pay Tuition Fees 
+   8. View Exam Schedule 
+   9. Access Library Resources
+
+
+2. Faculty
+   1. Login 
+   2. View Dashboard 
+   3. Manage Course Content 
+   4. Upload Course Materials 
+   5. Create Assignments 
+   6. Grade Assignments/Exams 
+   7. Record Attendance 
+   8. View Class Roster 
+   9. Communicate with Students
+
+
+3. Department Head
+   1. Login
+   2. Manage Course Offerings 
+   3. Assign Faculty to Courses 
+   4. Approve Course Schedules 
+   5. View Department Reports 
+   6. Manage Faculty Workload 
+   7. Handle Student Issues
+
+
+4. Admin
+   1. User Management
+   2. Course Management 
+   3. Department Management 
+   4. Semester/Session Management 
+   5. Fee Management 
+   6. Generate Reports 
+   7. System Configuration
+
+
+Information with Activities
+In this section, we will identify the information associated with the activities of defined users. This includes how they work, their operational level, and the specific information required for each activity.
+Student
+1. Login/Register
+Students must authenticate themselves to access the system or create a new account during admission.
+I. Login Information
+* Student ID or Email
+* Password
+* Forgot Password Option
+* New Student Registration Link
+II. Registration Information
+* Full Name
+* Date of Birth
+* Gender
+* Contact Number
+* Email Address
+* Permanent Address
+* Guardian Information
+* Previous Academic Records
+* Program/Department Selection
+* Photo Upload
+2. Student Dashboard
+After successful login, students are directed to a personalized dashboard showing their academic status and quick access options.
+I. Dashboard Features
+* Welcome Message
+* Current Semester Information
+* Enrolled Courses
+* Upcoming Assignments/Exams
+* Grade Summary
+* Notifications/Announcements
+* Quick Links (Course Registration, Fee Payment)
+* Profile Information
+* Logout Button
+3. Enroll in Courses
+Students select and register for courses during the registration period each semester.
+I. Course Enrollment Information
+* Available Courses List
+* Course Code
+* Course Name
+* Credits
+* Faculty Name
+* Schedule (Day/Time)
+* Available Seats
+* Prerequisites
+* Add/Drop Course Options
+* Enrollment Confirmation
+4. View Course Schedule
+Students can view their weekly class schedule with all enrolled courses.
+I. Schedule Information
+* Course Name
+* Course Code
+* Faculty Name
+* Classroom/Location
+* Day and Time
+* Course Type (Lecture/Lab/Tutorial)
+* Calendar View
+* Export Option (PDF/iCal)
+5. Submit Assignments
+Students upload and submit their assignments through the system before the deadline.
+I. Assignment Submission Information
+* Assignment Title
+* Course Name
+* Submission Deadline
+* File Upload (PDF/Doc/Zip)
+* Submission Status
+* Late Submission Warning
+* Submission Confirmation
+* Previous Submissions (if allowed)
+6. View Grades
+Students can view their grades for assignments, exams, and overall course performance.
+I. Grade Information
+* Course Name
+* Assignment/Exam Name
+* Marks Obtained
+* Total Marks
+* Percentage/Grade
+* Semester GPA
+* Cumulative GPA
+* Grade Distribution Graph
+* Transcript Download Option
+7. Pay Tuition Fees
+Students can view fee details and make payments online through the system.
+I. Fee Payment Information
+* Semester Fee Breakdown
+* Tuition Fee
+* Other Charges (Lab, Library, etc.)
+* Total Amount Due
+* Payment Deadline
+* Payment Method (Online/Bank Transfer)
+* Payment Receipt
+* Payment History
+8. View Exam Schedule
+Students can access the schedule for mid-term and final examinations.
+I. Exam Schedule Information
+* Course Name
+* Exam Date
+* Exam Time
+* Exam Venue
+* Exam Type (Mid-term/Final)
+* Duration
+* Seat Number
+* Special Instructions
+9. Access Library Resources
+Students can search and access digital library materials and check book availability.
+I. Library Information
+* Search Books/Journals
+* Book Availability Status
+* Issue/Return Dates
+* Digital Resources (e-books, journals)
+* Reservation System
+* Fine Details (if applicable)
+________________
+
+
+Faculty
+1. Login
+Faculty members authenticate themselves to access the system using their credentials.
+I. Login Information
+* Faculty ID or Email
+* Password
+* Forgot Password Option
+2. Faculty Dashboard
+After login, faculty members see an overview of their courses, schedules, and pending tasks.
+I. Dashboard Features
+* Welcome Message
+* Current Courses Teaching
+* Class Schedule
+* Pending Grade Submissions
+* Student Queries/Messages
+* Announcements
+* Profile Information
+* Logout Button
+3. Manage Course Content
+Faculty members can organize and structure their course materials and syllabus.
+I. Course Management Information
+* Course Name and Code
+* Syllabus Upload
+* Course Objectives
+* Weekly Topics
+* Grading Policy
+* Course Resources
+* Prerequisites
+4. Upload Course Materials
+Faculty can upload lecture notes, presentations, and reference materials for students.
+I. Upload Information
+* Material Title
+* File Type (PDF/PPT/Video)
+* Week/Module Number
+* Upload Date
+* Visibility Settings (Published/Draft)
+* File Size Limit
+5. Create Assignments
+Faculty members create assignments with instructions and deadlines for students.
+I. Assignment Information
+* Assignment Title
+* Description/Instructions
+* Total Marks
+* Deadline
+* Submission Format
+* Attachments (if any)
+* Late Submission Policy
+6. Grade Assignments/Exams
+Faculty evaluate student submissions and record grades in the system.
+I. Grading Information
+* Student Name/ID
+* Assignment/Exam Name
+* Marks Awarded
+* Total Marks
+* Feedback/Comments
+* Grade Entry Date
+* Grade Submission Confirmation
+7. Record Attendance
+Faculty take and maintain attendance records for each class session.
+I. Attendance Information
+* Course Name
+* Date
+* Class Session
+* Student List
+* Attendance Status (Present/Absent/Late)
+* Attendance Percentage
+* Attendance Report Generation
+8. View Class Roster
+Faculty can view the list of students enrolled in their courses.
+I. Roster Information
+* Student Name
+* Student ID
+* Email
+* Contact Number
+* Photo
+* Enrollment Date
+* Program/Department
+9. Communicate with Students
+Faculty can send announcements and respond to student queries.
+I. Communication Features
+* Send Announcements
+* Reply to Student Messages
+* Email Notifications
+* Discussion Forum
+* Office Hours Information
+________________
+
+
+Department Head
+1. Login
+Department heads authenticate to access administrative functions for their department.
+I. Login Information
+* Department Head ID or Email
+* Password
+* Forgot Password Option
+2. Manage Course Offerings
+Department heads plan and approve the courses to be offered each semester.
+I. Course Offering Information
+* Course List
+* Course Code and Name
+* Credits
+* Required/Elective Status
+* Semester Plan
+* Program Requirements
+* Approval Status
+3. Assign Faculty to Courses
+Department heads assign teaching responsibilities to faculty members.
+I. Faculty Assignment Information
+* Course Name
+* Faculty Name
+* Faculty Specialization
+* Teaching Load
+* Previous Teaching Experience
+* Schedule Conflicts Check
+* Assignment Confirmation
+4. Approve Course Schedules
+Department heads review and approve the timetable for courses.
+I. Schedule Approval Information
+* Course Schedule
+* Classroom Allocation
+* Time Slot Assignment
+* Faculty Availability
+* Conflict Resolution
+* Approval Status
+* Publish Schedule
+5. View Department Reports
+Department heads access various reports on academic performance and operations.
+I. Report Information
+* Enrollment Statistics
+* Faculty Performance Reports
+* Course Completion Rates
+* Student Grade Distribution
+* Graduation Rates
+* Resource Utilization
+* Export Options (PDF/Excel)
+6. Manage Faculty Workload
+Department heads monitor and balance teaching assignments among faculty.
+I. Workload Information
+* Faculty Name
+* Courses Assigned
+* Total Credit Hours
+* Additional Responsibilities
+* Workload Distribution Graph
+* Adjustment Options
+7. Handle Student Issues
+Department heads address academic concerns and special requests from students.
+I. Issue Management Information
+* Student Name/ID
+* Issue Description
+* Issue Category (Academic/Administrative)
+* Priority Level
+* Resolution Status
+* Communication Log
+* Escalation Options
+________________
+
+
+Admin
+1. User Management
+Admin creates, modifies, and manages user accounts for all system users.
+I. User Management Features
+* Add/Edit/Delete Users
+* Assign Roles (Student, Faculty, Department Head)
+* Manage Login Credentials
+* View User Activity Log
+* Enable/Disable Accounts
+* Password Reset
+* Bulk User Import
+2. Course Management
+Admin maintains the master list of courses and their details.
+I. Course Management Features
+* Add New Courses
+* Edit Course Information
+* Delete Obsolete Courses
+* Manage Course Prerequisites
+* Set Credit Hours
+* Assign Course Categories
+* Course Archive
+3. Department Management
+Admin manages department information and structure.
+I. Department Management Information
+* Department Name
+* Department Code
+* Department Head Assignment
+* Faculty List
+* Programs Offered
+* Contact Information
+* Establishment Date
+4. Semester/Session Management
+Admin configures academic calendar and semester schedules.
+I. Semester Information
+* Semester Name (Spring/Fall/Summer)
+* Start Date
+* End Date
+* Registration Period
+* Add/Drop Deadline
+* Exam Period
+* Holiday Schedule
+* Semester Status (Active/Archived)
+5. Fee Management
+Admin manages tuition fees and payment structures.
+I. Fee Management Information
+* Fee Structure by Program
+* Semester-wise Fees
+* Additional Charges
+* Payment Deadlines
+* Discount/Scholarship Rules
+* Late Payment Penalties
+* Fee Receipt Generation
+* Payment Reports
+6. Generate Reports
+Admin creates comprehensive reports for institutional planning and compliance.
+I. Report Types
+* Enrollment Reports
+* Financial Reports
+* Academic Performance Reports
+* Faculty Reports
+* Department-wise Statistics
+* Graduation Reports
+* Custom Report Builder
+* Scheduled Report Generation
+7. System Configuration
+Admin manages system settings and configurations.
+I. Configuration Options
+* System Parameters
+* Email Templates
+* Notification Settings
+* Backup Schedule
+* Security Settings
+* User Role Permissions
+* Integration Settings
+* Audit Log Access
+________________
+
+
+Use Case Diagram
+University Management System Use Case Model
+A use-case model illustrates how different types of users interact with the system to accomplish their goals. It describes user objectives, interactions between users and the system, and the functional requirements. Use case diagrams help gather system requirements including internal and external influences. These requirements primarily focus on design aspects. When analyzing a system to identify its functionalities, use cases are prepared and actors are identified.
+Actor: Student
+├── Register/Login
+├── View Dashboard
+├── Enroll in Courses
+├── View Course Schedule
+├── Submit Assignments
+├── View Grades
+├── Pay Tuition Fees
+├── View Exam Schedule
+├── Access Library Resources
+└── Logout
+Actor: Faculty
+├── Login
+├── View Dashboard
+├── Manage Course Content
+├── Upload Course Materials
+├── Create Assignments
+├── Grade Assignments/Exams
+├── Record Attendance
+├── View Class Roster
+├── Communicate with Students
+└── Logout
+Actor: Department Head
+├── Login
+├── Manage Course Offerings
+├── Assign Faculty to Courses
+├── Approve Course Schedules
+├── View Department Reports
+├── Manage Faculty Workload
+├── Handle Student Issues
+└── Logout
+Actor: Admin
+├── Login
+├── Manage Users
+├── Manage Courses
+├── Manage Departments
+├── Manage Semesters
+├── Manage Fees
+├── Generate Reports
+├── System Configuration
+└── Logout
+Optional Relationships (Sample)
+* Submit Assignments <<include>> → View Course Schedule
+* Enroll in Courses <<extend>> → Pay Tuition Fees
+* Grade Assignments <<include>> → View Class Roster
+* Assign Faculty to Courses <<include>> → Manage Course Offerings
+* Generate Reports <<include>> → View Department Reports, Financial Reports  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Student User Flow Diagram
+________________
+
+
+  
+Faculty User Flow Diagram
+  
+Department and Admin User Flow Diagram
