@@ -21,7 +21,7 @@ Cloudflare-first RAG chatbot built with Workers + Hono, R2, D1, Vectorize, and O
 ## Setup
 
 1. Install dependencies:
-   - `npm install`
+   - `pnpm install`
 2. Configure `wrangler.jsonc`:
    - Set `database_id` for D1
    - Ensure `bucket_name` and `index_name` exist
