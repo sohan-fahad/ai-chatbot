@@ -2,6 +2,10 @@
 
 Cloudflare-first RAG chatbot built with Workers + Hono, R2, D1, Vectorize, and OpenAI via AI Gateway.
 
+## Docs
+
+- Project plan and architecture: [`docs/plan-and-architecture.md`](docs/plan-and-architecture.md)
+
 ## Architecture
 
 - `POST /upload`: ingest `.txt` / `.md` files, store raw file in R2, chunk + embed, upsert vectors, persist metadata in D1.
