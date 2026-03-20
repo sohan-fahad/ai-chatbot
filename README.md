@@ -34,9 +34,9 @@ Cloudflare-first RAG chatbot built with Workers + Hono, R2, D1, Vectorize, and O
 
 ## Local Development
 
-- Start dev server: `npm run dev`
-- Typecheck: `npm run typecheck`
-- Test: `npm test`
+- Start dev server: `pnpm dev`
+- Typecheck: `pnpm typecheck`
+- Test: `pnpm test`
 
 ## API Examples
 
