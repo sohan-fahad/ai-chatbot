@@ -1,37 +1,43 @@
 {
-    "$schema": "node_modules/wrangler/config-schema.json",
-    "name": "ai-chatbot-rag",
-    "main": "src/index.ts",
-    "compatibility_date": "2026-03-19",
-    "observability": {
-      "enabled": true
-    },
-    "vars": {
-      "EMBEDDING_MODEL": "text-embedding-3-small",
-      "CHAT_MODEL": "gpt-4o-mini",
-      "EMBEDDING_DIMENSIONS": "1536",
-      "MAX_CHUNKS_PER_QUERY": "5",
-      "OPENAI_API_KEY": "YOUR_OPENAI_API_KEY"
-    },
-    "d1_databases": [
-      {
-        "binding": "DB",
-        "database_name": "ai-chatbot-rag-db",
-        "database_id": "YOUR_D1_DATABASE_ID",
-        "migrations_dir": "migrations"
-      }
-    ],
-    "r2_buckets": [
-      {
-        "binding": "DOCS_BUCKET",
-        "bucket_name": "ai-chatbot-rag-docs"
-      }
-    ],
-    "vectorize": [
-      {
-        "binding": "VECTOR_INDEX",
-        "index_name": "ai-chatbot-rag-index",
-        "remote": true
-      }
-    ]
-  }
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "ai-chatbot-rag",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-03-19",
+  "observability": {
+    "enabled": true
+  },
+  "vars": {
+    "EMBEDDING_MODEL": "text-embedding-3-small",
+    "CHAT_MODEL": "gpt-4o-mini",
+    "EMBEDDING_DIMENSIONS": "1536",
+    "MAX_CHUNKS_PER_QUERY": "5",
+    "OPENAI_API_KEY": "YOUR_OPENAI_API_KEY"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "ai-chatbot-rag-db",
+      "database_id": "YOUR_D1_DATABASE_ID",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "r2_buckets": [
+    {
+      "binding": "DOCS_BUCKET",
+      "bucket_name": "ai-chatbot-rag-docs"
+    }
+  ],
+  "kv_namespaces": [
+    {
+      "binding": "RATE_LIMIT_KV",
+      "id": "YOUR_RATE_LIMIT_KV_ID"
+    }
+  ],
+  "vectorize": [
+    {
+      "binding": "VECTOR_INDEX",
+      "index_name": "ai-chatbot-rag-index",
+      "remote": true
+    }
+  ]
+}

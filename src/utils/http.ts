@@ -32,3 +32,16 @@ export function internalError(c: Context, message = "Internal server error") {
     500,
   );
 }
+
+export function tooManyRequests(c: Context, message: string, retryAfterSeconds: number) {
+  c.header("retry-after", String(retryAfterSeconds));
+  return c.json(
+    {
+      error: "rate_limited",
+      message,
+      requestId: c.get("requestId"),
+      retryAfterSeconds,
+    },
+    429,
+  );
+}

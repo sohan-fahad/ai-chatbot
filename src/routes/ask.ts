@@ -1,12 +1,13 @@
 import { Hono } from "hono";
 import type { AppBindings } from "../types/env";
-import { badRequest, internalError } from "../utils/http";
+import { badRequest, internalError, tooManyRequests } from "../utils/http";
 import { createEmbeddings } from "../services/embeddings";
 import { searchVectors } from "../services/vectorize";
 import { getChunksByIds } from "../repositories/ragRepository";
 import { buildGroundedPrompt } from "../services/prompt";
 import { generateAnswer, streamAnswer } from "../services/llm";
 import { withRetry } from "../utils/retry";
+import { consumeDailyLimit } from "../utils/rateLimit";
 
 type AskBody = {
   query?: string;
@@ -16,6 +17,7 @@ type AskBody = {
 };
 
 const MAX_QUERY_CHARS = 2000;
+const DAILY_ASK_LIMIT = 50;
 
 function parseTopK(input: number | undefined, maxChunks: number): number {
   const raw = Number.isFinite(input) ? Math.floor(input as number) : 5;
@@ -41,6 +43,20 @@ askRoute.post("/", async (c) => {
     }
     if (query.length > MAX_QUERY_CHARS) {
       return badRequest(c, `query exceeds ${MAX_QUERY_CHARS} characters`);
+    }
+
+    const rateLimit = await consumeDailyLimit(
+      c.env.RATE_LIMIT_KV,
+      "ask",
+      workspaceId,
+      DAILY_ASK_LIMIT,
+    );
+    if (!rateLimit.allowed) {
+      return tooManyRequests(
+        c,
+        `Daily ask limit reached (${DAILY_ASK_LIMIT}/day) for this workspace`,
+        rateLimit.retryAfterSeconds,
+      );
     }
 
     const [queryEmbedding] = await withRetry(() => createEmbeddings(c.env, query));

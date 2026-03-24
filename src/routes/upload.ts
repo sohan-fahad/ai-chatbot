@@ -1,6 +1,6 @@
 import { Hono } from "hono";
 import type { AppBindings } from "../types/env";
-import { badRequest, internalError } from "../utils/http";
+import { badRequest, internalError, tooManyRequests } from "../utils/http";
 import { createId } from "../utils/ids";
 import { chunkText } from "../services/chunking";
 import { createEmbeddings } from "../services/embeddings";
@@ -8,9 +8,11 @@ import { extractTextFromFile, isAcceptedExtension } from "../services/parsing";
 import { insertChunks, insertDocument } from "../repositories/ragRepository";
 import { upsertVectors } from "../services/vectorize";
 import { withRetry } from "../utils/retry";
+import { consumeDailyLimit } from "../utils/rateLimit";
 
 const MAX_UPLOAD_BYTES = 5 * 1024 * 1024;
 const EMBEDDING_BATCH_SIZE = 100;
+const DAILY_UPLOAD_LIMIT = 3;
 
 async function embedInBatches(
   env: AppBindings["Bindings"],
@@ -41,11 +43,26 @@ uploadRoute.post("/", async (c) => {
     if (!workspaceId) {
       return badRequest(c, "workspace_id is required");
     }
+
+    const rateLimit = await consumeDailyLimit(
+      c.env.RATE_LIMIT_KV,
+      "upload",
+      workspaceId,
+      DAILY_UPLOAD_LIMIT,
+    );
+    if (!rateLimit.allowed) {
+      return tooManyRequests(
+        c,
+        `Daily upload limit reached (${DAILY_UPLOAD_LIMIT}/day) for this workspace`,
+        rateLimit.retryAfterSeconds,
+      );
+    }
+
     if (file.size > MAX_UPLOAD_BYTES) {
       return badRequest(c, `File exceeds ${MAX_UPLOAD_BYTES} bytes limit`);
     }
     if (!isAcceptedExtension(file.name)) {
-      return badRequest(c, "Only .txt and .md are supported in MVP");
+      return badRequest(c, "Supported file types: .txt, .md, .pdf, .doc, .docx");
     }
 
     const documentId = createId("doc");
@@ -128,8 +145,12 @@ uploadRoute.post("/", async (c) => {
       document_id: documentId,
       workspace_id: workspaceId,
       chunk_count: chunks.length,
-      accepted_types: ["txt", "md"],
+      accepted_types: ["txt", "md", "pdf", "doc", "docx"],
       errors: [],
+      rate_limit: {
+        daily_limit: DAILY_UPLOAD_LIMIT,
+        remaining_today: rateLimit.remaining,
+      },
     });
   } catch (error) {
     console.error("upload_error", {

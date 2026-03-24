@@ -2,6 +2,7 @@ export type Env = {
   DB: D1Database;
   DOCS_BUCKET: R2Bucket;
   VECTOR_INDEX: VectorizeIndex;
+  RATE_LIMIT_KV: KVNamespace;
   OPENAI_API_KEY: string;
   AI_GATEWAY_BASE_URL: string;
   EMBEDDING_MODEL?: string;
